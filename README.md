@@ -10,30 +10,31 @@ The core business question is to understand what makes a car more or less expens
 **Data Understanding / Preparation**
 There are multitudes of used car data from various sources. The Kaggle dataset we have access to included many variables - some numerical, some categorical. After looking at the architecture of the dataset, there were multiple data inference steps, and simplification steps to ensure a robust analysis could be conducted. 
 
-Given pricing is our desired outcome output, I visualized the price distribution of the dataset. This gave me a sense on potential outliers to account for. One may assume that cars of ultra high value (e.g., >250k) would require a more custom approach, and have factors that may not be included in the dataset (prestige, limited edition) - the willingness to pay is more unique to the buyer. Similarly, I excluded cars with ultra high odometers and/or cars that are quite old given the type of buyer may be different than the conventional buyer and may see value differently.
+Pricing distribution
 
-Other logic I applied is that purchases may be relatively location agnostic (to a state level). This is because shipping for purchases is relatively affordable, and shipping cars across states is commonplace with online marketplaces. Colors of cars may be easy to change, and gasoline types are available at gas stations. Additional logic steps can be seen in the notebook.
 
-Once I made some simplifying assumptions, I conducted multiple steps were involved in preparing the data. This involved filling gaps for numerical figures with medians / modes, one-hot encoding certain categorical variables.
 
 **Modelling**
-From here, I created initial models using various regression techniques -- Lasso, Ridge, and Linear. I wanted to assess in a couple ways to ensure that the client receives the best model to inform the ultimate recommendations. 
-
-
+We employed multiple regression techniques, including Lasso, Ridge, and Linear Regression, to develop our initial models. Particular attention was paid to the R² values in linear regression to understand the influence of different factors on pricing.
 
 
 **Evaluation**
-I then started evaluating the models to ensure that they were optimized. This involved playing with certain parameters to assess if the models could be improved from the initial pass.
+This phase also involved reassessing the initial filtering criteria for selecting cars in our dataset.
+
+The evaluation stage focused on refining the models for enhanced accuracy. We experimented with Ridge regression's alpha parameters and used different k-folds in linear regression. 
+
+
 
 **Recommendations**
-Returning back to our central questions -- what are the factors that make a car more or less expensive? What do customers value in a car, and are wliling to pay for? Our assessment of the dataset provides several insights that can inform our client on their business strategy. A couple of themes:
+Returning back to our central questions -- what are the factors that make a car more or less expensive? What do customers value in a car, and are wliling to pay for? Our assessment of the dataset provides several insights that can inform our client on their business strategy. 
 
-Durability / Utility Factors:
+The models offer valuable insights into what attributes make a car more or less expensive. The first insight for the client is to decide what will be assessed model-based vs. which may be outliers, such as antique or high-durability cars, which might deviate from standard pricing patterns. Models are good only insofar as there is adequate robust data to support the model. For more custom purchases, the price may be decided by customer willingness to pay and may require more research.
 
-Impact of Brand:
+For more standard cars, the analysis suggests that age and mileage are significant price determinants, but there are potential value pockets. For instance, older cars with low mileage present a unique value proposition that may still have extreme durability. Newer cars with lower mileage could mimic the new car market (e.g., post-lease market) which could be impacted by new car sales dynamics. Older cars with high mileage may be more dependent on the manufacturer reputation for durable cars (e.g., Toyota) -- the buyer may be considering cost of maintenance, remaining miles on car prior to next purchase. Ultimately, the age and mileage are related to the car's ability to get the customer from point A to point B until the car no longer works.
 
-Impact of Geography:
+Customer segmentation data would also be extremely useful for the remaining factors including manufacturer, type, model. The type of car may depend on the use case for the purchaser -- going to work, going to soccer practice, carrying work tools, luxury cars. The type is related to some of the other factors that impact performance including cylinders, 
 
-Other Factors:
+The dealership should also consider broader market trends and external factors that may impact ability to predict future car prices based on historical sales. Some examples of recent context are the increase in new car pricing due to rising cost of materials,  electric vehicle incentives. These could either help or hurt used car pricing -- by the time our client would built an inventory, certain exogenous factors could have changed, impacting their business strategy.
 
+For future steps, the client should consider expanding datasets to include other sources -- historical, other current reference, and current sale. Historical datasets may look similar to the Kaggle dataset that was analyzed. Current references could include sources like KBB, where API would allow quick data integrations. Current sale could leverage web scrapers to build a database of current pricing -- this would enable accounting for current market trends to complement historical datasets.
 
