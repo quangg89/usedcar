@@ -62,6 +62,7 @@ For the models, I used RMSE to assess which models may offer the best insight in
 Work can be seen in the ipynb file.
 
 **Recommendations**
+
 Returning back to our central questions -- what are the factors that make a car more or less expensive? What do customers value in a car, and are wliling to pay for? Our assessment of the dataset provides several insights that can inform our client on their business strategy. 
 
 The models offer valuable insights into what attributes make a car more or less expensive. The first insight for the client is to decide what will be assessed model-based vs. which may be outliers, such as antique or high-durability cars, which might deviate from standard pricing patterns. Models are good only insofar as there is adequate robust data to support the model. For more custom purchases, the price may be decided by customer willingness to pay and may require customized research.
