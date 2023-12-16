@@ -5,29 +5,31 @@ I conducted an analysis to assess which factors drive used car price. Based on t
 The following summary follows the CRISP-DM framework, meant to characterize and define the problem prior to building models.
 
 **Business Understanding:**
+
 The core business question is to understand what makes a car more or less expensive / what customers value in a car. The downstream question behind this is -- if this can be informed by data / modelling, can our client use this information to guide their business strategy (as a used car dealership). 
 
-**Data Understanding / Preparation**
-There are multitudes of used car data from various sources. The Kaggle dataset we have access to included many variables - some numerical, some categorical. 
+**Data Understanding**
 
-Data Understanding
+There are multitudes of used car data from various sources. The Kaggle dataset we have access to included many variables - some numerical, some categorical. 
 
 Having a look at the data prior to preparation was insightful. I looked at the initial pricing distribution which showed a large range of prices. This implied that we would need to focus / filter the input data to have a usable model given the limited sample in the outer ranges of price.
 
 I also visualized categorical variables to understand the distribution by manufacturer, condition, cylinders, fuel, title status, and transmission. This enabled understanding of how the data may need to be manipulated / filtered prior to building the models. The interesting assumption here is that type of car would play a big role on cylinders and drive. I was unsure on impact of fuel, transmission.
 
-Data Preparation
+**Data Preparation**
 
 After looking at the architecture of the dataset, there were multiple data preparation steps prior to modelling.
 
 This involved filtering for certain types of cars based on price + mileage + age, removing columns that may not have a major role (e.g., cars can be shipped, titles transferred across state borders), inference steps for filling data gaps (median / mode), and one-hot encoding certain categorical variables that may play a role. In initial iterations, over-selecting factors and one-hot encoding too many variables made the model cumbersome and so multiple simplifying assumptions were needed.
 
 **Modelling**
+
 We employed multiple regression techniques, including Lasso, Ridge, and Linear Regression, to develop our initial models. Particular attention was paid to the R² values in linear regression to understand the influence of different factors on pricing. 
 
 Work can be seen in the ipynb file.
 
 **Evaluation**
+
 This phase also involved reassessing the initial filtering criteria for selecting cars in our dataset. The impact of outliers or car selection on model performance is extremely important and was refined after a couple modifications. 
 
 For the models, we used RMSE to assess which models may offer the best insight into used car pricing. All 3 models demonstrated <8000 RMSE - this number could be further refine in additional iterations of the models, through different filtering, and different parameter optimization. In my assessment, evaluation stage focused on applying alpha parameter optimization and k-fold analysis to assess if RMSE could further be reduced.
