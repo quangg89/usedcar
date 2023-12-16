@@ -8,31 +8,41 @@ The following summary follows the CRISP-DM framework, meant to characterize and 
 The core business question is to understand what makes a car more or less expensive / what customers value in a car. The downstream question behind this is -- if this can be informed by data / modelling, can our client use this information to guide their business strategy (as a used car dealership). 
 
 **Data Understanding / Preparation**
-There are multitudes of used car data from various sources. The Kaggle dataset we have access to included many variables - some numerical, some categorical. After looking at the architecture of the dataset, there were multiple data inference steps, and simplification steps to ensure a robust analysis could be conducted. 
+There are multitudes of used car data from various sources. The Kaggle dataset we have access to included many variables - some numerical, some categorical. 
 
-Pricing distribution
+Data Understanding
 
+Having a look at the data prior to preparation was insightful. I looked at the initial pricing distribution which showed a large range of prices. This implied that we would need to focus / filter the input data to have a usable model given the limited sample in the outer ranges of price.
+
+I also visualized
+
+After looking at the architecture of the dataset, there were multiple data inference steps, and simplification steps to ensure a robust analysis could be conducted. 
+
+Data Preparation
 
 
 **Modelling**
-We employed multiple regression techniques, including Lasso, Ridge, and Linear Regression, to develop our initial models. Particular attention was paid to the R² values in linear regression to understand the influence of different factors on pricing.
+We employed multiple regression techniques, including Lasso, Ridge, and Linear Regression, to develop our initial models. Particular attention was paid to the R² values in linear regression to understand the influence of different factors on pricing. 
+
+Work can be seen in the ipynb file.
 
 
 **Evaluation**
-This phase also involved reassessing the initial filtering criteria for selecting cars in our dataset.
+This phase also involved reassessing the initial filtering criteria for selecting cars in our dataset. The impact of outliers or car selection on model performance is extremely important and was refined after a couple modifications. 
 
-The evaluation stage focused on refining the models for enhanced accuracy. We experimented with Ridge regression's alpha parameters and used different k-folds in linear regression. 
+For the models, we used RMSE to assess which models may offer the best insight into used car pricing. All 3 models demonstrated <8000 RMSE - this number could be further refine in additional iterations of the models.
+Evaluation stage focused on applying alpha parameter optimization and k-fold analysis to assess if RMSE could further be reduced.
 
-
+Work can be seen in the ipynb file.
 
 **Recommendations**
 Returning back to our central questions -- what are the factors that make a car more or less expensive? What do customers value in a car, and are wliling to pay for? Our assessment of the dataset provides several insights that can inform our client on their business strategy. 
 
-The models offer valuable insights into what attributes make a car more or less expensive. The first insight for the client is to decide what will be assessed model-based vs. which may be outliers, such as antique or high-durability cars, which might deviate from standard pricing patterns. Models are good only insofar as there is adequate robust data to support the model. For more custom purchases, the price may be decided by customer willingness to pay and may require more research.
+The models offer valuable insights into what attributes make a car more or less expensive. The first insight for the client is to decide what will be assessed model-based vs. which may be outliers, such as antique or high-durability cars, which might deviate from standard pricing patterns. Models are good only insofar as there is adequate robust data to support the model. For more custom purchases, the price may be decided by customer willingness to pay and may require customized research.
 
 For more standard cars, the analysis suggests that age and mileage are significant price determinants, but there are potential value pockets. For instance, older cars with low mileage present a unique value proposition that may still have extreme durability. Newer cars with lower mileage could mimic the new car market (e.g., post-lease market) which could be impacted by new car sales dynamics. Older cars with high mileage may be more dependent on the manufacturer reputation for durable cars (e.g., Toyota) -- the buyer may be considering cost of maintenance, remaining miles on car prior to next purchase. Ultimately, the age and mileage are related to the car's ability to get the customer from point A to point B until the car no longer works.
 
-Customer segmentation data would also be extremely useful for the remaining factors including manufacturer, type, model. The type of car may depend on the use case for the purchaser -- going to work, going to soccer practice, carrying work tools, luxury cars. The type is related to some of the other factors that impact performance including cylinders, 
+Customer segmentation data would also be extremely useful for the remaining factors including manufacturer, type, model. The type of car may depend on the use case for the purchaser -- going to work, going to soccer practice, carrying work tools, luxury cars. The type is related to some of the other factors that impact performance. Customer segmentation for in-person purchases (smaller universe, local demographic data) vs online purchars (larger universe) could also help inform which inventory goes in the front row or on the advertisements. Another consideration is that some cars may not fetch a high price but move a higher volume which could be assessed in future analyses (e.g., Toyota Camry vs. Porsche 911).
 
 The dealership should also consider broader market trends and external factors that may impact ability to predict future car prices based on historical sales. Some examples of recent context are the increase in new car pricing due to rising cost of materials,  electric vehicle incentives. These could either help or hurt used car pricing -- by the time our client would built an inventory, certain exogenous factors could have changed, impacting their business strategy.
 
