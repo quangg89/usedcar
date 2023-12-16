@@ -14,24 +14,23 @@ Data Understanding
 
 Having a look at the data prior to preparation was insightful. I looked at the initial pricing distribution which showed a large range of prices. This implied that we would need to focus / filter the input data to have a usable model given the limited sample in the outer ranges of price.
 
-I also visualized
-
-After looking at the architecture of the dataset, there were multiple data inference steps, and simplification steps to ensure a robust analysis could be conducted. 
+I also visualized categorical variables to understand the distribution by manufacturer, condition, cylinders, fuel, title status, and transmission. This enabled understanding of how the data may need to be manipulated / filtered prior to building the models. The interesting assumption here is that type of car would play a big role on cylinders and drive. I was unsure on impact of fuel, transmission.
 
 Data Preparation
 
+After looking at the architecture of the dataset, there were multiple data preparation steps prior to modelling.
+
+This involved filtering for certain types of cars based on price + mileage + age, removing columns that may not have a major role (e.g., cars can be shipped, titles transferred across state borders), inference steps for filling data gaps (median / mode), and one-hot encoding certain categorical variables that may play a role. In initial iterations, over-selecting factors and one-hot encoding too many variables made the model cumbersome and so multiple simplifying assumptions were needed.
 
 **Modelling**
 We employed multiple regression techniques, including Lasso, Ridge, and Linear Regression, to develop our initial models. Particular attention was paid to the R² values in linear regression to understand the influence of different factors on pricing. 
 
 Work can be seen in the ipynb file.
 
-
 **Evaluation**
 This phase also involved reassessing the initial filtering criteria for selecting cars in our dataset. The impact of outliers or car selection on model performance is extremely important and was refined after a couple modifications. 
 
-For the models, we used RMSE to assess which models may offer the best insight into used car pricing. All 3 models demonstrated <8000 RMSE - this number could be further refine in additional iterations of the models.
-Evaluation stage focused on applying alpha parameter optimization and k-fold analysis to assess if RMSE could further be reduced.
+For the models, we used RMSE to assess which models may offer the best insight into used car pricing. All 3 models demonstrated <8000 RMSE - this number could be further refine in additional iterations of the models, through different filtering, and different parameter optimization. In my assessment, evaluation stage focused on applying alpha parameter optimization and k-fold analysis to assess if RMSE could further be reduced.
 
 Work can be seen in the ipynb file.
 
