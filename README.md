@@ -3,6 +3,7 @@
 I conducted an analysis to assess which factors drive used car price. Based on these analyses, I will provide insights that can guide my client (a used car dealership) on what consumers value in a car. This could have implications to the clients supply strategy, inventory strategy, and future revenue growth strategy as a business.
 
 The following summary follows the CRISP-DM framework, meant to characterize and define the problem prior to building models.
+Notebook can be found here: https://github.com/quangg89/usedcar/blob/main/Used%20Car%20Pricing%20Analysis.ipynb
 
 **Business Understanding:**
 
