@@ -13,7 +13,7 @@ The core business question is to understand what makes a car more or less expens
 
 There are multitudes of used car data from various sources. The provided Kaggle dataset included many variables - some numerical, some categorical. 
 
- #   Column        
+    Column        
 ---  ------         
  0   id             
  1   region        
