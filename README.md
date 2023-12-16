@@ -1,27 +1,52 @@
 # Used Car Pricing Analysis
 
-I conducted an analysis to assess which factors drive used car price. Based on these analyses, I will provide insights that can guide my client (a used car dealership) on what consumers value in a car. This could have implications to the clients supply strategy, inventory strategy, and future revenue growth strategy as a business.
+I conducted an assessesment of the factors contributing to used car prices. Based on these analyses, I will provide insights that can guide my client (a used car dealership) on what consumers value in a car. This could have implications to the clients supply strategy, inventory strategy, and future revenue growth strategy as a business.
 
 The following summary follows the CRISP-DM framework, meant to characterize and define the problem prior to building models.
 Notebook can be found here: https://github.com/quangg89/usedcar/blob/main/Used%20Car%20Pricing%20Analysis.ipynb
 
 **Business Understanding:**
 
-The core business question is to understand what makes a car more or less expensive / what customers value in a car. The downstream question behind this is -- if this can be informed by data / modelling, can our client use this information to guide their business strategy (as a used car dealership). 
+The core business question is to understand what makes a car more or less expensive / what customers value in a car. The downstream question behind this is -- by using datasets and modelling, can our client use this information to guide their business strategy (as a used car dealership)?
 
 **Data Understanding**
 
-There are multitudes of used car data from various sources. The Kaggle dataset we have access to included many variables - some numerical, some categorical. 
+There are multitudes of used car data from various sources. The provided Kaggle dataset included many variables - some numerical, some categorical. 
+
+ #   Column        
+---  ------         
+ 0   id             
+ 1   region        
+ 2   price          
+ 3   year         
+ 4   manufacturer  
+ 5   model         
+ 6   condition     
+ 7   cylinders     
+ 8   fuel          
+ 9   odometer     
+ 10  title_status   
+ 11  transmission   
+ 12  VIN            
+ 13  drive          
+ 14  size           
+ 15  type           
+ 16  paint_color    
+ 17  state     
 
 Having a look at the data prior to preparation was insightful. I looked at the initial pricing distribution which showed a large range of prices. This implied that we would need to focus / filter the input data to have a usable model given the limited sample in the outer ranges of price.
 
 I also visualized categorical variables to understand the distribution by manufacturer, condition, cylinders, fuel, title status, and transmission. This enabled understanding of how the data may need to be manipulated / filtered prior to building the models. The interesting assumption here is that type of car would play a big role on cylinders and drive. I was unsure on impact of fuel, transmission and was curious to investigate further.
 
+From these visualizations, the distribution for each of the categories, and sample sizing for each guided decision on data preparation.
+
 **Data Preparation**
 
 After looking at the architecture of the dataset, there were multiple data preparation steps prior to modelling.
 
-This involved filtering for certain types of cars based on price + mileage + age, removing columns that may not have a major role (e.g., cars can be shipped, titles transferred across state borders), inference steps for filling data gaps (median / mode), and one-hot encoding certain categorical variables that may play a role. In initial iterations, over-selecting factors and one-hot encoding too many variables made the model cumbersome and so multiple simplifying assumptions were needed.
+I first created filters for certain types of cars based on price + mileage + age to try to reduce the impact of outliers. From the distribution visualizations earlier, I had a sense of where to establish some filtering parameters. I then conducted some inference steps for filling data gaps (median / mode) given the data gaps, particularly in categories that had >60% sample. 
+
+For categorical variables, the initial iteration over-selected factors and one-hot encoding too many variables made the model cumbersome -- multiple simplifying assumptions were made in order to avoid this. As an example, I deprioritized location (region / state) of the car. This is because of the rise of online marketplaces and the relatively affordable shipping for vehicles for cross-state title transfer. I removed other columns that should not have a direct relationship with the price including the ID / VIN. I also assumed that car color is not a major driver as it could be re-painted relatively easily.
 
 **Modelling**
 
@@ -49,5 +74,7 @@ Customer segmentation data would also be extremely useful for the remaining fact
 
 The dealership should also consider broader market trends and external factors that may impact ability to predict future car prices based on historical sales. Some examples of recent context are the increase in new car pricing due to rising cost of materials,  electric vehicle incentives. These could either help or hurt used car pricing -- by the time our client would built an inventory, certain exogenous factors could have changed, impacting their business strategy.
 
-For future steps, the client should consider expanding datasets to include other sources -- historical, other current reference, and current sale. Historical datasets may look similar to the Kaggle dataset that was analyzed. Current references could include sources like KBB, where API would allow quick data integrations. Current sale could leverage web scrapers to build a database of current pricing -- this would enable accounting for current market trends to complement historical datasets.
+For future steps, additional work can be done on the current dataset to see if it impacts model optimization. Filling data gaps with median / mode can work, but we could consider removing rows altogether. The filtering parameters could also be modified if there is a specific focus for our client (e.g., European luxury cars vs. trucks vs. any type of car. Further model optimization can also be done in these revised datasets (e.g., k fold, alpha).
+
+The client should consider expanding datasets to include other sources -- historical, other current reference, and current sale. Historical datasets may look similar to the Kaggle dataset that was analyzed. Current references could include sources like KBB, where API would allow quick data integrations. Current sale could leverage web scrapers to build a database of current pricing -- this would enable accounting for current market trends to complement historical datasets.
 
