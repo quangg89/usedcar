@@ -13,30 +13,28 @@ The core business question is to understand what makes a car more or less expens
 
 There are multitudes of used car data from various sources. The provided Kaggle dataset included many variables - some numerical, some categorical. 
 
-    Column        
----  ------         
- 0   id             
- 1   region        
- 2   price          
- 3   year         
- 4   manufacturer  
- 5   model         
- 6   condition     
- 7   cylinders     
- 8   fuel          
- 9   odometer     
- 10  title_status   
+ 0   id - removed             
+ 1   region - removed        
+ 2   price - boxplot          
+ 3   year - boxplot         
+ 4   manufacturer - bar chart  
+ 5   model          
+ 6   condition - bar chart     
+ 7   cylinders - bar chart     
+ 8   fuel - bar chart          
+ 9   odometer - box plot     
+ 10  title_status - bar chart   
  11  transmission   
- 12  VIN            
- 13  drive          
- 14  size           
- 15  type           
- 16  paint_color    
- 17  state     
+ 12  VIN - removed            
+ 13  drive - bar chart          
+ 14  size - removed          
+ 15  type - bar chart           
+ 16  paint_color - removed    
+ 17  state - removed     
 
 Having a look at the data prior to preparation was insightful. I looked at the initial pricing distribution which showed a large range of prices. This implied that we would need to focus / filter the input data to have a usable model given the limited sample in the outer ranges of price.
 
-I also visualized categorical variables to understand the distribution by manufacturer, condition, cylinders, fuel, title status, and transmission. This enabled understanding of how the data may need to be manipulated / filtered prior to building the models. The interesting assumption here is that type of car would play a big role on cylinders and drive. I was unsure on impact of fuel, transmission and was curious to investigate further.
+I also visualized categorical variables to understand the distribution by manufacturer, condition, cylinders, fuel, title status, transmission, and type. This enabled understanding of how the data may need to be manipulated / filtered prior to building the models. The interesting assumption here is that type of car would play a big role on cylinders and drive. I was unsure on impact of fuel, transmission and was curious to investigate further.
 
 From these visualizations, the distribution for each of the categories, and sample sizing for each guided decision on data preparation.
 
